@@ -1,11 +1,12 @@
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import "./../styles/globals.css";
+import ReactQueryProviders from "@/hooks/useReactQuery";
 
 const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
-  title: "공학도서관 미니과제",
+  title: "Pokemon Card",
   description: "공학도서관 미니과제 구현",
 };
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ReactQueryProviders>{children}</ReactQueryProviders>
+      </body>
     </html>
   );
 }
