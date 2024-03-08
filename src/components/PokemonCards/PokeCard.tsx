@@ -1,13 +1,16 @@
-interface PokeCardProps {
-  pokemonName: string;
-}
+"use client";
 
-function PokeCard({pokemonName}: PokeCardProps) {
+import {forwardRef} from "react";
+
+function PokeCard({image, name}, innerRef) {
   return (
     <>
-      <li>{pokemonName}</li>
+      <div className="poke-card" ref={innerRef}>
+        <img src={image} alt={name} className="poke-card__image" />
+        <h2 className="poke-card__name">{name}</h2>
+      </div>
     </>
   );
 }
 
-export default PokeCard;
+export default forwardRef(PokeCard);
