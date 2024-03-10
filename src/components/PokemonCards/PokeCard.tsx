@@ -2,13 +2,10 @@
 
 import {forwardRef} from "react";
 
-function PokeCard({image, name}, innerRef) {
+function PokeCard() {
   return (
     <>
-      <div className="poke-card" ref={innerRef}>
-        <img src={image} alt={name} className="poke-card__image" />
-        <h2 className="poke-card__name">{name}</h2>
-      </div>
+      <div className="poke-card"></div>
     </>
   );
 }

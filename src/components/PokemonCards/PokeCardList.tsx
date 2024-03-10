@@ -1,74 +1,33 @@
 "use client";
 
+import fetchPokemonService from "@/service/fetchPokemonService";
 import styled from "@emotion/styled";
-import PokeCard from "./PokeCard";
+import {useInfiniteQuery, useQuery} from "@tanstack/react-query";
+import {useEffect, useMemo, useState} from "react";
 import {useInView} from "react-intersection-observer";
-import {useInfiniteQuery} from "@tanstack/react-query";
-import {fetchPokemonService} from "@/service/fetchPokemonService";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import {CardContent} from "@mui/material";
 
 function PokeCardList() {
   const {ref, inView} = useInView();
-  const {
-    data: pokemons,
-    error,
-    fetchNextPage,
-    isFetchingNextPage,
-    hasNextPage,
-    status,
-  } = useInfiniteQuery({
-    queryKey: ["pokemons"],
-    queryFn: fetchPokemonService,
-    initialPageParam: 0,
-    getNextPageParam: (lastPage, allPages) => {
-      const nextPage = lastPage.length === 20 ? allPages.length * 20 : null;
-      return nextPage;
-    },
-  });
 
-  console.log(pokemons);
+  /*   useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [inView]);
+ */
 
   return (
     <section>
-      <PokemonList>
-        {pokemons?.pages?.map((page) =>
-          page.map(
-            (
-              pokemon: {
-                imageUrl: string;
-                name: string;
-              },
-              index: number
-            ) => {
-              if (page.length == index + 1) {
-                return (
-                  <PokeCard
-                    image={pokemon.imageUrl}
-                    name={pokemon.name}
-                    key={index}
-                    innerRef={ref}
-                  />
-                );
-              } else {
-                return (
-                  <PokeCard
-                    image={pokemon.imageUrl}
-                    name={pokemon.name}
-                    key={index}
-                  />
-                );
-              }
-            }
-          )
-        )}
-      </PokemonList>
+      <Grid container spacing={6}></Grid>
     </section>
   );
 }
 
 export default PokeCardList;
 
-const PokemonList = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(3, 1fr);
-`;
+const Item = styled(Paper)(({theme}) => ({
+  textAlign: "center",
+}));
