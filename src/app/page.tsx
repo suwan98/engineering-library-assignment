@@ -9,9 +9,7 @@ export default function Home() {
       <GlobalStyle />
       <HomeWrapper>
         <Header />
-        <main>
-          <PokeCardList />
-        </main>
+        <PokeCardList />
       </HomeWrapper>
     </>
   );

@@ -2,10 +2,11 @@
 
 import {Global, css} from "@emotion/react";
 
-const style = css`
+const styles = css`
   html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    /* background-color: #d9d9d9; */
   }
   body,
   button,
@@ -20,6 +21,9 @@ const style = css`
   ul {
     margin: 0;
     padding: 0;
+  }
+  li {
+    list-style: none;
   }
   main,
   button {
@@ -51,7 +55,7 @@ const style = css`
 `;
 
 function GlobalStyle() {
-  return <Global styles={style} />;
+  return <Global styles={styles} />;
 }
 
 export default GlobalStyle;

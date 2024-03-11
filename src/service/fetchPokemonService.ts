@@ -27,9 +27,13 @@ async function fetchPokemons(pageParams = 0): Promise<PokemonResponse> {
 
 /* 각 포켓몬들에 맞는 Image 반환 */
 function addImageToPokemon(pokemon: Pokemon, index: number) {
+  /* 포켓몬 URL에서 고유 ID 추출 */
+  const urlSegment = pokemon.url.split("/");
+  const pokemonId = urlSegment[urlSegment.length - 2];
+
   return {
     ...pokemon,
-    imageUrl: `${POKE_IMAGE_URL}/${index}.png`,
+    imageUrl: `${POKE_IMAGE_URL}/${pokemonId}.png`,
   };
 }
 
