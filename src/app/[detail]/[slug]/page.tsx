@@ -1,4 +1,12 @@
-import {useSearchParams} from "next/navigation";
+"use client";
+
+import usePokemonDetail from "@/hooks/usePokemonDetail";
+import Image from "next/image";
+import Container from "@/components/common/Container";
+import PokemonStats from "@/components/Detail/PokemonStats";
+import PokemonPhysical from "@/components/Detail/PokemonPhysical";
+import styled from "@emotion/styled";
+import {Card, CardMedia, CardContent} from "@mui/material";
 
 interface Props {
   detail: string;
@@ -6,13 +14,43 @@ interface Props {
 }
 
 function PokemonDetailPage({params}: {params: Props}) {
-  console.log(params);
+  const {pokemonDetail} = usePokemonDetail(params.slug);
 
   return (
-    <>
-      <div>포켓몬 상세 페이지</div>
-    </>
+    <DetailContainer>
+      <Card sx={{padding: "2rem"}}>
+        <h1>{pokemonDetail?.name}</h1>
+        <CardMedia>
+          <Image
+            src={pokemonDetail?.imageUrl}
+            alt="pokemon-detail"
+            width={200}
+            height={200}
+          />
+        </CardMedia>
+        <CardContent>
+          <PokemonPhysical
+            weight={pokemonDetail?.weight}
+            height={pokemonDetail?.height}
+            types={pokemonDetail?.types}
+          />
+          <PokemonStats stats={pokemonDetail?.stats} />
+        </CardContent>
+      </Card>
+    </DetailContainer>
   );
 }
+
+const DetailContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+`;
 
 export default PokemonDetailPage;

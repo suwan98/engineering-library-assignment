@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import ReactQueryProvider from "@/provider/ReactQueryProvider";
 import localFont from "next/font/local";
+import GlobalStyle from "@/styles/globalStyle";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={font.className}>
         <ReactQueryProvider>{children}</ReactQueryProvider>
+        <GlobalStyle />
       </body>
     </html>
   );

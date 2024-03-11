@@ -4,7 +4,19 @@ import axios from "axios";
 
 async function fetchPokemonDetail(pokemonId: string) {
   const response = await axios.get(`${POKE_BASE_URL}/${pokemonId}`);
-  return response.data;
+  const data = response.data;
+
+  const necessaryDetails = {
+    name: data.name,
+    weight: data.weight,
+    height: data.height,
+    base_experience: data.base_experience,
+    imageUrl: data.sprites.front_default,
+    types: data.types,
+    stats: data.stats,
+  };
+
+  return necessaryDetails;
 }
 
 function usePokemonDetail(pokemonId: string) {

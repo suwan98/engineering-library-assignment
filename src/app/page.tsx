@@ -1,16 +1,14 @@
 import PokeCardList from "@/components/PokemonCards/PokeCardList";
 import Header from "@/components/common/Header";
-import HomeWrapper from "@/components/common/HomeWrapper";
-import GlobalStyle from "@/styles/globalStyle";
+import Container from "@/components/common/Container";
 
 export default function Home() {
   return (
     <>
-      <GlobalStyle />
-      <HomeWrapper>
+      <Container>
         <Header />
         <PokeCardList />
-      </HomeWrapper>
+      </Container>
     </>
   );
 }
