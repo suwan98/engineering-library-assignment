@@ -11,7 +11,7 @@ interface PokemonResponse {
   results: Pokemon[];
 }
 
-async function fetchPokemons(pageParams = 0): Promise<PokemonResponse> {
+export async function fetchPokemons(pageParams = 0): Promise<PokemonResponse> {
   /* 한페이지에 보여줄 포켓몬 수 */
   const LIMIT = 50;
   const response = await axios.get(`${POKE_BASE_URL}`, {

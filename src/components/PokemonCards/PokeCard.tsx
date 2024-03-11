@@ -25,11 +25,10 @@ interface Props {
 const PokeCardStyle = styled(Card)`
   max-width: 21rem;
   padding: 2rem;
+  display: grid;
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column;
 `;
 
 const PokeCardContent = styled(CardContent)`
