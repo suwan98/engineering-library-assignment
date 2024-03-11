@@ -6,7 +6,7 @@ const styles = css`
   html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    /* background-color: #d9d9d9; */
+    background-color: rgb(226 232 240);
   }
   body,
   button,

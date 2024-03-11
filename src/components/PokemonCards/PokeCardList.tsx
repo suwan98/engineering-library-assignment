@@ -5,6 +5,9 @@ import {useInfiniteQuery} from "@tanstack/react-query";
 import {useEffect} from "react";
 import {useInView} from "react-intersection-observer";
 import Image from "next/image";
+import PokeCard from "./PokeCard";
+import {Grid} from "@mui/material";
+import styled from "@emotion/styled";
 
 function PokeCardList() {
   const {ref, inView} = useInView();
@@ -32,27 +35,31 @@ function PokeCardList() {
 
   return (
     <section>
-      {pokeomons &&
-        pokeomons.pages?.map((group, index) => (
-          <>
-            {group &&
-              group.map((pokemon, groupIndex) => (
-                <>
-                  <Image
-                    src={pokemon.imageUrl}
-                    width={200}
-                    height={200}
-                    alt="pokemons"
-                  />
-                  <span>{pokemon.name}</span>
-                  {groupIndex === pokeomons.pages.length - 1 &&
-                    index === group.length - 1 && <div ref={ref}></div>}
-                </>
-              ))}
-          </>
-        ))}
+      <PokeList>
+        {pokeomons &&
+          pokeomons.pages?.map((group) => (
+            <>
+              {group &&
+                group.map((pokemon) => (
+                  <PokeCard key={pokemon.name} ref={ref} pokemon={pokemon} />
+                ))}
+            </>
+          ))}
+      </PokeList>
     </section>
   );
 }
+
+const PokeList = styled.ul`
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  cursor: pointer;
+`;
 
 export default PokeCardList;
