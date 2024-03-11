@@ -13,10 +13,10 @@ interface PokemonResponse {
 
 async function fetchPokemons(pageParams = 0): Promise<PokemonResponse> {
   /* 한페이지에 보여줄 포켓몬 수 */
-  const LIMIT = 20;
+  const LIMIT = 50;
   const response = await axios.get(`${POKE_BASE_URL}`, {
     params: {
-      offset: pageParams ? pageParams : 0,
+      offset: pageParams * LIMIT,
       limit: LIMIT,
     },
   });
@@ -26,7 +26,7 @@ async function fetchPokemons(pageParams = 0): Promise<PokemonResponse> {
 }
 
 /* 각 포켓몬들에 맞는 Image 반환 */
-function addImageToPokemon(pokemon: Pokemon, index: number) {
+function addImageToPokemon(pokemon: Pokemon) {
   /* 포켓몬 URL에서 고유 ID 추출 */
   const urlSegment = pokemon.url.split("/");
   const pokemonId = urlSegment[urlSegment.length - 2];
