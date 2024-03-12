@@ -14,32 +14,34 @@ interface Props {
 }
 
 function PokemonDetailPage({params}: {params: Props}) {
-  const {pokemonDetail} = usePokemonDetail(params.slug);
+  const {pokemonDetail, isLoading} = usePokemonDetail(params.slug);
 
-  return (
-    <DetailContainer>
-      <Card sx={{padding: "3rem"}}>
-        <h1>{pokemonDetail?.name.toUpperCase()}</h1>
-        <CardMedia>
-          <Image
-            src={pokemonDetail?.imageUrl}
-            alt="pokemon-detail"
-            width={200}
-            height={200}
-          />
-        </CardMedia>
-        <CardContent>
-          <PokemonPhysical
-            weight={pokemonDetail?.weight}
-            height={pokemonDetail?.height}
-            types={pokemonDetail?.types}
-          />
-          <hr />
-          <PokemonStats stats={pokemonDetail?.stats} />
-        </CardContent>
-      </Card>
-    </DetailContainer>
-  );
+  if (!isLoading) {
+    return (
+      <DetailContainer>
+        <Card sx={{padding: "3rem"}}>
+          <h1>{pokemonDetail?.name.toUpperCase()}</h1>
+          <CardMedia>
+            <Image
+              src={pokemonDetail?.imageUrl}
+              alt="pokemon-detail"
+              width={200}
+              height={200}
+            />
+          </CardMedia>
+          <CardContent>
+            <PokemonPhysical
+              weight={pokemonDetail?.weight}
+              height={pokemonDetail?.height}
+              types={pokemonDetail?.types}
+            />
+            <hr />
+            <PokemonStats stats={pokemonDetail?.stats} />
+          </CardContent>
+        </Card>
+      </DetailContainer>
+    );
+  }
 }
 
 const DetailContainer = styled.div`
