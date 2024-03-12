@@ -49,40 +49,11 @@ pnpm dev
 
 ## 📦 폴더구조
 
-📦src
-┣ 📂app
-┃ ┣ 📂fonts
-┃ ┃ ┣ 📜Pretendard-Bold.woff2
-┃ ┃ ┣ 📜Pretendard-Regular.woff2
-┃ ┃ ┗ 📜Pretendard-SemiBold.woff2
-┃ ┣ 📂[detail]
-┃ ┃ ┗ 📂[slug]
-┃ ┃ ┃ ┗ 📜page.tsx
-┃ ┣ 📜error.tsx
-┃ ┣ 📜favicon.ico
-┃ ┣ 📜layout.tsx
-┃ ┣ 📜loading.tsx
-┃ ┗ 📜page.tsx
-┣ 📂components
-┃ ┣ 📂common
-┃ ┃ ┣ 📜Container.tsx
-┃ ┃ ┗ 📜Header.tsx
-┃ ┣ 📂Detail
-┃ ┃ ┣ 📜PokemonPhysical.tsx
-┃ ┃ ┗ 📜PokemonStats.tsx
-┃ ┗ 📂PokemonCards
-┃ ┃ ┣ 📜PokeCard.tsx
-┃ ┃ ┗ 📜PokeCardList.tsx
-┣ 📂constants
-┃ ┗ 📜POKE_BASE_URL.ts
-┣ 📂hooks
-┃ ┣ 📜usePokemonDetail.tsx
-┣ 📂provider
-┃ ┗ 📜ReactQueryProvider.tsx
-┣ 📂service
-┃ ┗ 📜fetchPokemonService.ts
-┗ 📂styles
-┃ ┗ 📜globalStyle.tsx
+<br />
+
+![alt text](public/assets/README_IMAGE/folder-tree.png)
+
+<br />
 
 - `📂 [detail]` : nextjs 14버전 폴더기반 라우팅을 기반으로 상세페이지 이동경로를 /detail/slug(예시 : /detail/dugtrio)로 이동하도록 폴더를 구성했습니다.
 - `📜 error.tsx/loading.tsx` : 마찬가지로 nextjs는 파일기반 에러페이지/로딩페이지 ui를 지원하므로 app 디렉토리 내부에서 구성했습니다.
@@ -140,7 +111,11 @@ useEffect(() => {
 
 ### 특정 집단 군의 다수 자료 나열
 
+<br />
+
 ![alt text](public/assets/README_IMAGE/main-image.png)
+
+<br />
 
 - 기본적으로 데이터들이 `PokeCardList`와 내부 `PokeCard` 컴포넌트로 렌더링되도록 구성했습니다.
   - `PokeCardList`는 `grid`를 통해 3x3 테이블로 나누어졌으며,
@@ -194,4 +169,7 @@ const PokeCardButton = styled(Button)`
 - 사용자가 특정 포켓몬 클릭시 특정 포켓몬의 이름을 기반으로 라우팅되며 (예시 : http://localhost:3000/detail/weepinbell)
 - 해당 상세페이지에는 포켓몬의 이름, 신체정보, 스탯정보등의 ui가 표시되어있습니다.
   - 신체정보와 스텟정보는 각각 PokemonPhysical/PokemonStats 컴포넌트로 분리했습니다.
-    ![alt text](public/assets/README_IMAGE/detail-image.png)
+
+<br />
+
+![alt text](public/assets/README_IMAGE/detail-image.png)
