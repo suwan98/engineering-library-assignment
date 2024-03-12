@@ -48,12 +48,13 @@ const DetailContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 100vw;
   height: 100vh;
+  @media (max-width: 768px) {
+    height: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
 `;
 
 export default PokemonDetailPage;

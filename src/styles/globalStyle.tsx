@@ -7,6 +7,7 @@ const styles = css`
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     background-color: rgb(226 232 240);
+
   }
   body,
   button,

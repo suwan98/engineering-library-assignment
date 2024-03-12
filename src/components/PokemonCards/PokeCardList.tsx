@@ -4,9 +4,7 @@ import fetchPokemonService from "@/service/fetchPokemonService";
 import {useInfiniteQuery} from "@tanstack/react-query";
 import {useEffect} from "react";
 import {useInView} from "react-intersection-observer";
-import Image from "next/image";
 import PokeCard from "./PokeCard";
-import {Grid} from "@mui/material";
 import styled from "@emotion/styled";
 
 function PokeCardList() {
@@ -21,7 +19,7 @@ function PokeCardList() {
     initialPageParam: 1,
     queryFn: ({pageParam = 1}) => fetchPokemonService(pageParam),
     getNextPageParam: (_, pages) => {
-      if (pages.length < 3) {
+      if (pages.length < 5) {
         return pages.length + 1;
       } else return undefined;
     },
