@@ -18,8 +18,8 @@ function PokemonDetailPage({params}: {params: Props}) {
 
   return (
     <DetailContainer>
-      <Card sx={{padding: "2rem"}}>
-        <h1>{pokemonDetail?.name}</h1>
+      <Card sx={{padding: "3rem"}}>
+        <h1>{pokemonDetail?.name.toUpperCase()}</h1>
         <CardMedia>
           <Image
             src={pokemonDetail?.imageUrl}
@@ -34,6 +34,7 @@ function PokemonDetailPage({params}: {params: Props}) {
             height={pokemonDetail?.height}
             types={pokemonDetail?.types}
           />
+          <hr />
           <PokemonStats stats={pokemonDetail?.stats} />
         </CardContent>
       </Card>
