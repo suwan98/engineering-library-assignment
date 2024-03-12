@@ -14,7 +14,7 @@
 
 ### 데모페이지
 
-- [Pokemon Card](https://engineering-library-assignment.vercel.app/detail/meowth)
+- [Pokemon Card](https://engineering-library-assignment.vercel.app/)
 
 ### 로컬환경
 
