@@ -2,12 +2,13 @@
 
 import fetchPokemonService from "@/service/fetchPokemonService";
 import {useInfiniteQuery} from "@tanstack/react-query";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useInView} from "react-intersection-observer";
 import PokeCard from "./PokeCard";
 import styled from "@emotion/styled";
 
 function PokeCardList() {
+  const [searchPokemon, setSearchPokemon] = useState("");
   const {ref, inView} = useInView();
 
   const {
@@ -31,17 +32,24 @@ function PokeCardList() {
     }
   }, [fetchNextPage, hasNextPage, inView]);
 
+  const filteredPokemons = pokeomons?.pages
+    ?.flat() // 모든 페이지를 하나의 배열로 평탄화
+    .filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchPokemon.toLowerCase())
+    );
+
   return (
     <section>
+      <input
+        type="text"
+        value={searchPokemon}
+        onChange={(e) => setSearchPokemon(e.target.value)}
+        placeholder="Search by name..."
+      />
       <PokeList>
-        {pokeomons &&
-          pokeomons.pages?.map((group) => (
-            <>
-              {group &&
-                group.map((pokemon) => (
-                  <PokeCard key={pokemon.name} ref={ref} pokemon={pokemon} />
-                ))}
-            </>
+        {filteredPokemons &&
+          filteredPokemons.map((pokemon) => (
+            <PokeCard key={pokemon.name} pokemon={pokemon} />
           ))}
       </PokeList>
     </section>
@@ -57,7 +65,6 @@ const PokeList = styled.ul`
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  cursor: pointer;
 `;
 
 export default PokeCardList;

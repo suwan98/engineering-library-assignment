@@ -42,6 +42,7 @@ const PokeCardTypography = styled(Typography)`
 
 const PokeCardButton = styled(Button)`
   background-color: rgb(148 163 184);
+  cursor: pointer;
 
   &:hover {
     background-color: rgb(100 116 139);
